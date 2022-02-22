@@ -3,24 +3,65 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width">
+
+        <!-- HTML Meta Tags -->
         <title>Amtrakle | Amtraker</title>
-        <link href="style.css" rel="stylesheet" type="text/css" />
+        <meta name="description" content="Wordle, but like with Amtrak Stations
+        
+        amogus">
+        
+        <!-- Facebook Meta Tags -->
+        <meta property="og:url" content="https://amtrakle.amtraker.com/">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="Amtrakle | Amtraker">
+        <meta property="og:description" content="Wordle, but like with Amtrak Stations
+        
+        amogus">
+        <meta property="og:image" content="https://amtrakle.amtraker.com/opengraph.png">
+        
+        <!-- Twitter Meta Tags -->
+        <meta name="twitter:card" content="summary_large_image">
+        <meta property="twitter:domain" content="amtrakle.amtraker.com">
+        <meta property="twitter:url" content="https://amtrakle.amtraker.com/">
+        <meta name="twitter:title" content="Amtrakle | Amtraker">
+        <meta name="twitter:description" content="Wordle, but like with Amtrak Stations
+        
+        amogus">
+        <meta name="twitter:image" content="https://amtrakle.amtraker.com/opengraph.png">
+        
+        <!-- Meta Tags Generated via https://www.opengraph.xyz -->
+        
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-keyboard@latest/build/css/index.css">
+        <link href="style.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
-        <h1>Amtrakle</h1>
-        <h2>Wordle, but you guess the Amtrak Station!</h2>
-        <br>
-        <section class="letters">
-            <p class="letter"">C</p>
-            <p class="letter"">H</p>
-            <p class="letter"">I</p>
-        </section>
-        <p>Use your keyboard (if you have one) or the integrated one below:</p>
-
-        <div class="simple-keyboard"></div>
-
-        <script src="https://cdn.jsdelivr.net/npm/simple-keyboard@latest/build/index.js"></script>
-        <script src="script.js"></script>
+        <main>
+            <h1>Amtrakle</h1>
+            <h2>Wordle, but you guess the Amtrak Station!</h2>
+            <h3 id="dateThingy"></h3>
+            <section class="letters" id="answersRow"></section>
+            <section class="letters">
+                <div class="letterRow">
+                    <p class="letter inputs">_</p>
+                    <p class="letter inputs">_</p>
+                    <p class="letter inputs">_</p>
+                </div>
+            </section>
+            <center id="stuffGoesHere">
+                <p id="stationName" class="stationName">Enter a station code to get started...</p>
+                <p id="tryCount" class="tryCount">Tries: 0/542</p>
+            </center>
+            
+            <p>Use your keyboard (if you have one) or the integrated one below:</p>
+    
+            <section class="keyboardHolder">
+                <div class="simple-keyboard"></div>
+            </section>
+    
+            <script src="stuff.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/simple-keyboard@latest/build/index.js"></script>
+            <script src="script.js"></script>
+            <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "656f580c387e459aaf196cfb0d143227"}'></script><!-- End Cloudflare Web Analytics -->
+        </main>
     </body>
 </html>
