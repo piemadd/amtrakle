@@ -1,8 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width">
+        <link rel="manifest" href="manifest.json">
+        <meta name="theme-color" content="#000000"/>
 
         <!-- HTML Meta Tags -->
         <title>Amtrakle | Amtraker</title>
@@ -49,7 +51,7 @@
             </section>
             <center id="stuffGoesHere">
                 <p id="stationName" class="stationName">Enter a station code to get started...</p>
-                <p id="tryCount" class="tryCount">Tries: 0/542</p>
+                <p id="tryCount" class="tryCount">Tries: 0/5</p>
             </center>
             
             <p>Use your keyboard (if you have one) or the integrated one below:</p>
@@ -57,7 +59,13 @@
             <section class="keyboardHolder">
                 <div class="simple-keyboard"></div>
             </section>
-    
+
+            <section class="listOfStations">
+                <button type="button" class="collapsible">List of all Amtrak Stations (Click to Open)</button>
+                <div class="content">
+                    
+                </div>    
+            </section>    
             <script src="stuff.js"></script>
             <script src="https://cdn.jsdelivr.net/npm/simple-keyboard@latest/build/index.js"></script>
             <script src="script.js"></script>

@@ -6,6 +6,7 @@
     --fg-secondary: #707070;
     --bg-primary: #202020;
     --bg-secondary: #353535;
+    --bg-tertiary: var(--fg-secondary);
 }
 
 body {
@@ -91,4 +92,38 @@ h1 {
     min-height:50px;
     height:auto;
     border:2px solid rgba(63,63,63,1);
+}
+
+ /* Style the button that is used to open and close the collapsible content */
+.collapsible {
+    background-color: var(--bg-secondary);
+    color: var(--fg-primary);
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    text-align: left;
+    outline: none;
+    font-size: 16px;
+    margin-top: 32px;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active, .collapsible:hover {
+    background-color: var(--bg-tertiary);
+}
+
+/* Style the collapsible content. Note: hidden by default */
+.content {
+    padding: 0 18px;
+    display: none;
+    overflow: hidden;   
+    background-color: var(--bg-secondary);
+    color: var(--fg-primary);
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
 }
