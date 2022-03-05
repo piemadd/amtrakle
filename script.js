@@ -16,7 +16,7 @@ let answerString = '';
 let unusable = [];
 let numOfTries = 0;
 let solved = false;
-let scoreShareTitle = `Amtrakle ${dateLocal}\n`;
+let scoreShareTitle = `Amtrakle ${dateLocal} `;
 let scoreShareResults = '';
 
 document.getElementById('dateThingy').innerText = dateLocal;
@@ -26,8 +26,11 @@ const updateChars = (() => {
         chars[i].innerText = answerString[i] ? answerString[i] : '_';
     }
 
-    stationName.innerText = stations[answerString] ? stations[answerString] : 'Not a valid Amtrak Station'
-    
+    if (answerString.length < 3) {
+        stationName.innerText = ''
+    } else {
+        stationName.innerText = stations[answerString] ? stations[answerString] : 'Not a valid Amtrak Station'
+    }    
 });
 
 const processAnswer = (() => {
@@ -72,7 +75,7 @@ const processAnswer = (() => {
 
         if (correctAnswer == answerString) {
             solved = true;
-            let scoreShareFinal = `${scoreShareTitle}${numOfTries}/${totalTries}\n${scoreShareResults}`;
+            let scoreShareFinal = `${scoreShareTitle}${numOfTries}/${totalTries}\nhttps://amtrakle.amtraker.com\n${scoreShareResults}`;
 
             let scoreShareTextArea = document.createElement('div'); //textarea
             scoreShareTextArea.innerText = scoreShareFinal; //value
@@ -99,16 +102,39 @@ const processAnswer = (() => {
             scoreShareResults += '\n';
         }
 
+        lettersBox.append(newCharsElement);
+        window.scrollTo(0,document.body.scrollHeight);   
+
         if (numOfTries >= totalTries) {
             console.log('test')
             let scoreShareTextArea = document.createElement('p');
             scoreShareTextArea.innerHTML = "GAME OVER!<br>Better luck next time :)"; //value
             sharingArea.append(scoreShareTextArea)
             solved = true; //gg
+
+            let finalCharsElement = document.createElement('div');
+            finalCharsElement.classList.add("letterRow");
+
+            for (let i = 0; i < 3; i++) {
+                let tempElement = document.createElement('p');
+                tempElement.innerText = correctAnswer[i];
+                tempElement.classList.add("letter");
+    
+                tempElement.style['color'] = 'var(--fg-primary)';
+                tempElement.style['background-color'] = '#0c9110';
+    
+                finalCharsElement.append(tempElement);   
+            }
+
+            let notifOfDoodoo = document.createElement('center');
+            notifOfDoodoo.innerHTML = "<h2 style=\"margin-bottom: -24px;\">Correct Answer: </h2>";
+            //notifOfDoodoo.style['margin-bottom'] = '-2px';
+            //notifOfDoodoo.classList.add("tryCount");
+            lettersBox.append(notifOfDoodoo);
+            
+            lettersBox.append(finalCharsElement);
+            
         }
-        
-        lettersBox.append(newCharsElement);
-        window.scrollTo(0,document.body.scrollHeight);   
     }
 });
 
@@ -127,6 +153,7 @@ const processKey = ((key) => {
             answerString = answerString.slice(0, -1);
             break;
         case 'Enter':
+            closeCollapsible();
             processAnswer();
             break;
         default:
@@ -187,6 +214,14 @@ collapsible.addEventListener("click", function() {
         collapsible.style['border-bottom-right-radius'] = '0px';
     }
 });
+
+const closeCollapsible = (() => {
+    collapsible.classList.remove("active");
+    
+    content.style.display = "none";
+    collapsible.style['border-bottom-left-radius'] = '8px';
+    collapsible.style['border-bottom-right-radius'] = '8px';
+})
 
 let stationsListThingy = Object.keys(stations);
 for (let i = 0; i < stationsListThingy.length; i++) {
